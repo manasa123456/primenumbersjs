@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function evenOdd() {
+        var number = document.getElementById("number").value;
+        document.getElementById("evenOdd").innerHTML =
+          number % 2 === 0 ? "Number is even" : "Number is odd";
+        primeOrNot();
+      }
+      function primeOrNot() {
+        var isPrime = true;
+        var number = document.getElementById("number").value;
+        if (number <= 1) {
+          isPrime = false;
+        } else {
+          for (var i = 2; i < number; i++) {
+            if (number % i == 0) {
+              isPrime = false;
+              break;
+            }
+          }
+        }
+        document.getElementById("prime").innerHTML = isPrime
+          ? "Number is prime number"
+          : "Number is not prime";
+        fibonaci();
+      }
+      function fibonaci() {
+        var lastNumber = document.getElementById("number").value;
+        var firstNumber = 0;
+        var secondNumber = 0;
+        var nextNumber = 1;
+        var series = [];
+        for (var i = 1; i <= lastNumber; i++) {
+          firstNumber = secondNumber;
+          secondNumber = nextNumber;
+          nextNumber = firstNumber + secondNumber;
+          if (nextNumber > lastNumber) {
+            break;
+          }
+          series.push(nextNumber);
+        }
+        document.getElementById("series").innerHTML = series;
+      }
+    </script>
+  </head>
+  <body>
+    <input type="number" id="number" />
+    <button type="button" onclick="evenOdd()">Submit</button>
+    <p id="evenOdd"></p>
+    <p id="prime"></p>
+    <p id="series"></p>
+  </body>
+</html> 
